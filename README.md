@@ -1,4 +1,3 @@
-# cplusplus-praktikum-akhir-struktur-data
 # Praktikum Rekursif, Sorting, Searching, Collision Handling, Tree, Graph, dan Hash Table
 
 1. **RECURSIVE**
