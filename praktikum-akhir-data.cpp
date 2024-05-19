@@ -2,7 +2,7 @@
 #include <string>
 #include <iomanip>
 
-// Standar Kerja (?)
+// standar Kerja (?)
 // 1. Tree -> untuk pencarian buku ('TreeNode' <saling berhubungan> 'insertBuku karo 'cariBukuTree'
 // 2. Rekursi -> pencarian buku di dalam pohon biner(?) 'cariBukuTree'
 // 3. Graph -> struktur data graf 'Graph' + 'GraphNode' + ISBN buku saling terkoneksi
@@ -28,12 +28,12 @@ using namespace std;
 string username;
 
 // struktur buku
-struct Buku {
+struct Buku { // masuk ke tree // masuk ke BukuAbjad
     string judul;
     string penulis;
     int tahun;
     string genre;
-    string ISBN;
+    string ISBN; // masuk ke GraphNode
     bool status; // true jika dipinjam, false jika tersedia
     int jumlah;
     Buku *next;
@@ -155,6 +155,7 @@ Pengguna* searchUser(string username, string password) {
 
 void tambahGraphNode(Graph *&graph, string ISBN, Buku *buku);
 
+// ini fungsi tambah buku, tpi lebih ke metodenya...
 void tambahBuku(string judul, string penulis, int tahun, string genre, string ISBN, bool status, int jumlah) {
     Buku *bukuBaru = new Buku{judul, penulis, tahun, genre, ISBN, status, jumlah, nullptr, nullptr};
 
@@ -216,6 +217,7 @@ Buku* cariBuku(string judul) {
     return nullptr;
 }
 
+// fungsi tambah buku admin
 void tambahBukuAdmin() {
     string judul, penulis, genre, ISBN;
     int tahun, jumlah;
@@ -279,6 +281,7 @@ void ubahDataBuku() {
     }
 }
 
+// fungsi hapus buku oleh admin.
 void hapusBukuAdmin() {
     string judul;
     cout << "Masukkan judul buku yang ingin dihapus: ";
@@ -307,6 +310,7 @@ void hapusBuku(string judul) {
     }
 }
 
+// fungsi lihat daftar buku (admin)
 void lihatDaftarBukuAdmin() {
     // Tampilkan header tabel
     cout << "-----------------------------------------------------------------------------------------------------------" << endl;
@@ -332,6 +336,7 @@ void lihatDaftarBukuAdmin() {
     } while (temp != headBuku);
 }
 
+// fungsi lihat daftar buku (user)
 void lihatDaftarBukuUser() {
     // Tampilkan header tabel
     cout << "------------------------------------------------------------------------" << endl;
@@ -357,6 +362,7 @@ void lihatDaftarBukuUser() {
 
 }
 
+// fungsi pinjam buku, connected by ISBN buku
 void pinjamBuku(string username) {
     string judul;
     cout << "Masukkan judul buku yang ingin dipinjam: ";
@@ -378,6 +384,8 @@ void pinjamBuku(string username) {
     }
 }
 
+// arezyh.s
+// fungsi mengembalikan buku yang dipinjam.
 void kembalikanBuku() {
     string judul;
     cout << "Masukkan judul buku yang ingin dikembalikan: ";
@@ -423,6 +431,7 @@ void cariBukuBinarySearch() {
     }
 }
 
+// fungsi melihat daftar riwayat transaksi yang terjadi
 void lihatDaftarTransaksi() {
     Transaksi *temp = headTransaksi;
     if (!temp) {
@@ -446,7 +455,8 @@ void lihatDaftarTransaksi() {
     cout << "-------------------------------------------------" << endl;
 }
 
-
+// arezyhs
+// sorting bubble sort mengurutkan buku by abjad a - z
 void urutkanBukuByAbjad(Buku* bukuAbjad[]) {
     // Pengurutan menggunakan bubble sort
     for (int i = 0; i < 26; ++i) {
@@ -519,6 +529,7 @@ void lihatDaftarBukuByAbjad() {
     cout << "------------------------------------------------------------------------" << endl;
 }
 
+// fungsi tampilan menu adm00n
 void adminMenu() {
     int choice;
     do {
@@ -562,6 +573,7 @@ void adminMenu() {
     } while (choice != 0);
 }
 
+// fungsi tampilan menu user
 void userMenu() {
     int choice;
     do {
